@@ -1,0 +1,29 @@
+{
+    "name": "omouren/external-var-dumper-bundle",
+    "type": "symfony-bundle",
+    "description": "Externalize Symfony VarDumper dumps",
+    "keywords": ["dump", "debug", "external", "webservice", "api"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Olivier Mouren",
+            "email": "mouren.olivier@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/framework-bundle": "~2.3|~3.0",
+        "symfony/var-dumper": "^2.3|^3.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-0": { "Omouren\\ExternalVarDumperBundle": "" }
+    },
+    "minimum-stability": "dev",
+    "target-dir": "Omouren/ExternalVarDumperBundle",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

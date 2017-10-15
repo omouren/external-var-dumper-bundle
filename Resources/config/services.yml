@@ -1,0 +1,20 @@
+services:
+    omouren_external_var_dumper.dumper:
+        class: Omouren\ExternalVarDumperBundle\Services\Dumper
+        arguments:
+            - '@event_dispatcher'
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'handleInit'}
+            - { name: 'kernel.event_listener', event: 'console.command', method: 'handleInit'}
+
+
+    omouren_external_var_dumper.handler:
+        class: Omouren\ExternalVarDumperBundle\Services\Handler
+        arguments:
+            - '@omouren_external_var_dumper.client'
+        tags:
+            - { name: 'kernel.event_listener', event: 'omouren.external_var_dump.event', method: 'handleEvent'}
+            - { name: 'kernel.event_listener', event: 'kernel.terminate', method: 'onKernelTerminate'}
+
+    omouren_external_var_dumper.client:
+        class: Omouren\ExternalVarDumperBundle\Services\Client

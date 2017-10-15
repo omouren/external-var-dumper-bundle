@@ -19,7 +19,6 @@
     "autoload": {
         "psr-0": { "Omouren\\ExternalVarDumperBundle": "" }
     },
-    "minimum-stability": "dev",
     "target-dir": "Omouren/ExternalVarDumperBundle",
     "extra": {
         "branch-alias": {

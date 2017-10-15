@@ -58,3 +58,16 @@ It will send a query to the external web service in JSON:
     "content":"html content of the symfony dump"
 }
 ```
+
+## VarDumper Viewer
+Viewer in Vue.js to catch and see your dumps :
+[external-var-dumper-viewer](https://github.com/omouren/external-var-dumper-viewer)
+
+With Pre-built [Docker image](https://hub.docker.com/r/omouren/external-var-dumper-viewer/)
+``` bash
+# By default, internaly server use port 8080
+docker run -p 80:8080 -ti omouren/external-var-dumper-viewer:latest
+# You can override it with custom port by an environment variable
+docker run -e "PORT=1337" -p 80:1337 -ti omouren/external-var-dumper-viewer:latest
+# Now go to http://localhost:80
+```

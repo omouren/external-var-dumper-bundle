@@ -38,7 +38,7 @@ Add configuration (optional) :
 omouren_external_var_dumper:
     uri: http://localhost:1337  # Uri to use for the query to the external service
     method: post                # HTTP method used by the query to the external service
-    appName: Symfony            # Added to the query to identify your dump source
+    app_name: Symfony           # Added to the query to identify your dump source
     replace_dumper: false       # Define if dumps should be visible only on the external service
 ```
 

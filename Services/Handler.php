@@ -13,7 +13,8 @@ class Handler
 
     private $htmlContentDumper;
 
-    private $vars = array();
+    private $events = array();
+
 
     public function __construct(Client $client)
     {
@@ -23,19 +24,17 @@ class Handler
 
     public function handleEvent(ExternalVarDumpEvent $event)
     {
-        $var = $event->getVar();
-
         if ('cli' === PHP_SAPI) {
-            $this->client->sendDump($this->htmlContentDumper->getContent($var));
+            $this->client->sendDump($this->htmlContentDumper->getDump($event->getVar()), $event->getSource(), $event->getDatetime());
         } else {
-            $this->vars[] = $var;
+            $this->events[] = $event;
         }
     }
 
     public function onKernelTerminate()
     {
-        foreach ($this->vars as $var) {
-            $this->client->sendDump($this->htmlContentDumper->getContent($var));
+        foreach ($this->events as $event) {
+            $this->client->sendDump($this->htmlContentDumper->getDump($event->getVar()), $event->getSource(), $event->getDatetime());
         }
     }
 }

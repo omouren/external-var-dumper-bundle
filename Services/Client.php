@@ -24,7 +24,7 @@ class Client
         $this->guzzleClient = new \GuzzleHttp\Client();
     }
 
-    public function sendDump($content)
+    public function sendDump($dump, $source, \DateTime $datetime)
     {
         $this->guzzleClient->request(
             $this->method,
@@ -32,7 +32,10 @@ class Client
             array(
                 'json' => array(
                     'app' => $this->appName,
-                    'content' => $content
+                    'id' => $dump['id'],
+                    'content' => $dump['content'],
+                    'source' => $source,
+                    'datetime' => $datetime->format(\DateTime::W3C)
                 )
             )
         );

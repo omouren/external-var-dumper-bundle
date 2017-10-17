@@ -12,12 +12,17 @@ class HtmlContentDumper extends HtmlDumper
 {
     private $content;
 
-    public function getContent(Data $var) {
+    public function getDump(Data $var) {
         $this->content = null;
 
         $this->dump($var);
 
-        return $this->content;
+        $this->content .= '<img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" onload="var h = this.parentNode.innerHTML, rx=/<script>(.*?)<\/script>/g, s; while (s = rx.exec(h)) {eval(s[1]);};" />';
+
+        return array(
+            'id' => $this->dumpId,
+            'content' => $this->content
+        );
     }
 
     /**

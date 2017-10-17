@@ -12,7 +12,7 @@ In case of a console command, it will occure instantanetly (to allow to debug co
 Via Composer
 
 ``` bash
-$ composer require omouren/external-var-dumper
+$ composer require omouren/external-var-dumper-bundle
 ```
 
 Register the bundle in the application kernel :
@@ -38,7 +38,7 @@ Add configuration (optional) :
 omouren_external_var_dumper:
     uri: http://localhost:1337  # Uri to use for the query to the external service
     method: post                # HTTP method used by the query to the external service
-    appName: Symfony            # Added to the query to identify your dump source
+    app_name: Symfony           # Added to the query to identify your dump source
     replace_dumper: false       # Define if dumps should be visible only on the external service
 ```
 
@@ -66,8 +66,8 @@ Viewer in Vue.js to catch and see your dumps :
 With Pre-built [Docker image](https://hub.docker.com/r/omouren/external-var-dumper-viewer/)
 ``` bash
 # By default, internaly server use port 8080
-docker run -p 80:8080 -ti omouren/external-var-dumper-viewer:latest
+$ docker run -p 80:8080 -ti omouren/external-var-dumper-viewer:latest
 # You can override it with custom port by an environment variable
-docker run -e "PORT=1337" -p 80:1337 -ti omouren/external-var-dumper-viewer:latest
+$ docker run -e "PORT=1337" -p 80:1337 -ti omouren/external-var-dumper-viewer:latest
 # Now go to http://localhost:80
 ```

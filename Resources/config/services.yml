@@ -1,4 +1,14 @@
 services:
+    omouren_external_var_dumper.init:
+        class: Omouren\ExternalVarDumperBundle\Services\ExternalVarDumper
+        arguments:
+            - '@event_dispatcher'
+            - '%kernel.debug%'
+            - '@var_dumper.cloner'
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'handleInit'}
+            - { name: 'kernel.event_listener', event: 'console.command', method: 'handleInit'}
+
     omouren_external_var_dumper.client:
         class: Omouren\ExternalVarDumperBundle\Services\Client
 

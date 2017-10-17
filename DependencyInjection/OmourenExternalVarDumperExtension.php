@@ -23,11 +23,14 @@ class OmourenExternalVarDumperExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
+        $container->getDefinition('omouren_external_var_dumper.dumper')
+            ->addArgument($config['replace_dumper']);
+
         $container->getDefinition('omouren_external_var_dumper.client')
             ->addArgument($config['app_name'])
             ->addArgument($config['uri'])
             ->addArgument($config['method']);
 
-        $container->setParameter( 'omouren_external_var_dumper.replace_dumper', $config['replace_dumper']);
+        $container->setParameter('omouren_external_var_dumper.replace_dumper', $config['replace_dumper']);
     }
 }

@@ -2,6 +2,12 @@
 
 namespace Omouren\ExternalVarDumperBundle\Services;
 
+use Symfony\Component\VarDumper\Dumper\CliDumper;
+use Symfony\Component\VarDumper\Dumper\HtmlDumper;
+use Symfony\Component\VarDumper\VarDumper;
+use Omouren\ExternalVarDumperBundle\Event\ExternalVarDumpEvent;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
 /**
  * @author Olivier Mouren <mouren.olivier@gmail.com>
  */

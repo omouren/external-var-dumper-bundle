@@ -7,6 +7,7 @@ use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 use Symfony\Component\VarDumper\VarDumper;
 use Omouren\ExternalVarDumperBundle\Event\ExternalVarDumpEvent;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * @author Olivier Mouren <mouren.olivier@gmail.com>

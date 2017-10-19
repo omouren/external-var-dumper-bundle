@@ -12,7 +12,7 @@ use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * @author Olivier Mouren <mouren.olivier@gmail.com>
  */
-class Client
+class ExternalVarDumper
 {
     private $eventDispatcher;
 

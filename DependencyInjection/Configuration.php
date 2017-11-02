@@ -26,7 +26,7 @@ class Configuration implements ConfigurationInterface
                     ->values(array('get', 'post', 'head', 'put', 'delete', 'options', 'patch'))
                     ->defaultValue('post')
                 ->end()
-                ->booleanNode('replace_dumper')->defaultFalse()->end()
+                ->booleanNode('enabled')->defaultTrue()->end()
             ->end()
         ;
 

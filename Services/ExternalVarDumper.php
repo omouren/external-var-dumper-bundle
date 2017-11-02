@@ -16,44 +16,30 @@ class ExternalVarDumper
 {
     private $eventDispatcher;
 
-    private $replaceDumper;
+    private $enabled;
 
     private $cloner;
 
     private $kernelDebug;
 
-    private $originalDumperHandler;
-
-    private $handler;
-
-    public function __construct(EventDispatcherInterface $eventDispatcher, $kernelDebug, $cloner, $replaceDumper)
+    public function __construct(EventDispatcherInterface $eventDispatcher, $kernelDebug, $cloner, $enabled)
     {
         $this->eventDispatcher = $eventDispatcher;
         $this->kernelDebug = $kernelDebug;
         $this->cloner = $cloner;
-        $this->replaceDumper = $replaceDumper;
+        $this->enabled = $enabled;
     }
 
     public function handleInit()
     {
-        if ($this->kernelDebug) {
-            $this->originalDumperHandler = VarDumper::setHandler(function($var) {
+        if ($this->kernelDebug && $this->enabled) {
+            VarDumper::setHandler(function($var) {
                 $handler = function ($var) {
                     $data = $this->cloner->cloneVar($var);
                     $this->eventDispatcher->dispatch('omouren.external_var_dump.event', new ExternalVarDumpEvent($data));
-
-                    if (!$this->replaceDumper) {
-                        if ($this->originalDumperHandler) {
-                            call_user_func($this->originalDumperHandler, $var);
-                            VarDumper::setHandler($this->handler);
-                        } else {
-                            $dumper = 'cli' === PHP_SAPI ? new CliDumper() : new HtmlDumper();
-                            $dumper->dump($data);
-                        }
-                    }
                 };
 
-                $this->handler = VarDumper::setHandler($handler);
+                VarDumper::setHandler($handler);
                 $handler($var);
             });
         }

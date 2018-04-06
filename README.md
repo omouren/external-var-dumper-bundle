@@ -55,7 +55,13 @@ It will send a query to the external web service in JSON:
 ```json
 {
     "app":"Symfony",
-    "content":"html content of the symfony dump"
+    "id":"sf-dump-1542914713",
+    "content":"html content of the symfony dump",
+    "source":{
+        "name":"DefaultController.php",
+        "line":21
+    },
+    "datetime":"2018-04-06T20:04:37+00:00"
 }
 ```
 
@@ -71,3 +77,5 @@ $ docker run -p 80:8080 -ti omouren/external-var-dumper-viewer:latest
 $ docker run -e "PORT=1337" -p 80:1337 -ti omouren/external-var-dumper-viewer:latest
 # Now go to http://localhost:80
 ```
+
+![Var Dumper Viewer](https://raw.githubusercontent.com/omouren/external-var-dumper-viewer/master/screenshot.png)

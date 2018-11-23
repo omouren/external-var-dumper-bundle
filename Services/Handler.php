@@ -24,11 +24,11 @@ class Handler
 
     public function handleEvent(ExternalVarDumpEvent $event)
     {
-        if ('cli' === PHP_SAPI) {
+        //if ('cli' === PHP_SAPI) {
             $this->client->sendDump($this->htmlContentDumper->getDump($event->getVar()), $event->getSource(), $event->getDatetime());
-        } else {
-            $this->events[] = $event;
-        }
+        //} else {
+        //    $this->events[] = $event;
+        //}
     }
 
     public function onKernelTerminate()

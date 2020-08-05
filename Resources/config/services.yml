@@ -18,4 +18,3 @@ services:
             - '@omouren_external_var_dumper.client'
         tags:
             - { name: 'kernel.event_listener', event: 'omouren.external_var_dump.event', method: 'handleEvent'}
-            - { name: 'kernel.event_listener', event: 'kernel.terminate', method: 'onKernelTerminate'}

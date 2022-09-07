@@ -15,7 +15,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('omouren_external_var_dumper);
+        $treeBuilder = new TreeBuilder('omouren_external_var_dumper');
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode

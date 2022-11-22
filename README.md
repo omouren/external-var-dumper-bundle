@@ -4,9 +4,6 @@
 
 The **ExternalVarDumperBundle** allows you to redirect Symfony dumps (VarDumper) to an external web service. Usefull to debug applications like REST APIs, background console commands or other applications that you don't have a direct output or that you can't break with a dump in the middle of the response.
 
-In case of a classic request, queries to the external web service will occure after the response, in the kernel terminate.
-In case of a console command, it will occure instantanetly (to allow to debug console command that run indefinitely like consumers)
-
 ## Installation
 
 Via Composer

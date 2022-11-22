@@ -36,7 +36,7 @@ class ExternalVarDumper
             VarDumper::setHandler(function($var) {
                 $handler = function ($var) {
                     $data = $this->cloner->cloneVar($var);
-                    $this->eventDispatcher->dispatch('omouren.external_var_dump.event', new ExternalVarDumpEvent($data));
+                    $this->eventDispatcher->dispatch(new ExternalVarDumpEvent($data), 'omouren.external_var_dump.event');
                 };
 
                 VarDumper::setHandler($handler);

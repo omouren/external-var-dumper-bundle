@@ -20,12 +20,6 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('app_name')->defaultValue('Symfony')->end()
-                ->scalarNode('uri')->defaultValue('http://localhost:1337')->end()
-                ->enumNode('method')
-                    ->values(array('get', 'post', 'head', 'put', 'delete', 'options', 'patch'))
-                    ->defaultValue('post')
-                ->end()
                 ->booleanNode('enabled')->defaultTrue()->end()
             ->end()
         ;

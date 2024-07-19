@@ -12,6 +12,8 @@ use Symfony\Component\DependencyInjection\Loader;
  */
 class OmourenExternalVarDumperExtension extends Extension
 {
+    private $enabled = false;
+
     /**
      * {@inheritdoc}
      */
@@ -23,12 +25,11 @@ class OmourenExternalVarDumperExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->getDefinition('omouren_external_var_dumper.init')
-            ->addArgument($config['enabled']);
+        $this->enabled = $config['enabled'];
+    }
 
-        $container->getDefinition('omouren_external_var_dumper.client')
-            ->addArgument($config['app_name'])
-            ->addArgument($config['uri'])
-            ->addArgument($config['method']);
+    public function isEnabled()
+    {
+        return $this->enabled;
     }
 }

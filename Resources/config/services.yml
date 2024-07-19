@@ -1,20 +1,6 @@
 services:
-    omouren_external_var_dumper.init:
-        class: Omouren\ExternalVarDumperBundle\Services\ExternalVarDumper
-        arguments:
-            - '@event_dispatcher'
-            - '%kernel.debug%'
-            - '@var_dumper.cloner'
-        tags:
-            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'handleInit'}
-            - { name: 'kernel.event_listener', event: 'console.command', method: 'handleInit'}
-
-    omouren_external_var_dumper.client:
-        class: Omouren\ExternalVarDumperBundle\Services\Client
-
-    omouren_external_var_dumper.handler:
-        class: Omouren\ExternalVarDumperBundle\Services\Handler
-        arguments:
-            - '@omouren_external_var_dumper.client'
-        tags:
-            - { name: 'kernel.event_listener', event: 'omouren.external_var_dump.event', method: 'handleEvent'}
+    omouren_external_var_dumper.var_dumper.server_connection:
+        class: Omouren\ExternalVarDumperBundle\Services\Connection
+        parent: var_dumper.server_connection
+        calls:
+            - setHttpClient: ['@http_client']

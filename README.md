@@ -33,9 +33,6 @@ Add configuration (optional) :
 ```yml
 # app/config/config.yml
 omouren_external_var_dumper:
-    uri: http://localhost:1337  # Uri to use for the query to the external service
-    method: post                # HTTP method used by the query to the external service
-    app_name: Symfony           # Added to the query to identify your dump source
     enabled: false              # Define if dumps are send to the external service
 ```
 
@@ -46,20 +43,6 @@ Usage
 <?php
 // ...
 dump($var);
-```
-
-It will send a query to the external web service in JSON:
-```json
-{
-    "app":"Symfony",
-    "id":"sf-dump-1542914713",
-    "content":"html content of the symfony dump",
-    "source":{
-        "name":"DefaultController.php",
-        "line":21
-    },
-    "datetime":"2018-04-06T20:04:37+00:00"
-}
 ```
 
 ## VarDumper Viewer

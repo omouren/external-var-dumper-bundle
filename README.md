@@ -32,8 +32,11 @@ Add configuration (optional) :
 
 ```yml
 # app/config/config.yml
+debug:
+    dump_destination: "tcp://dumper-viewer:8080"
+
 omouren_external_var_dumper:
-    enabled: false              # Define if dumps are send to the external service
+    enabled: true
 ```
 
 Usage

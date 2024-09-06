@@ -14,8 +14,15 @@ class ReplaceServerConnectionCompilerPass implements CompilerPassInterface
         $extension = $container->getExtension('omouren_external_var_dumper');
 
         if ($extension->isEnabled()) {
-            $container->getDefinition('data_collector.dump')
-                ->replaceArgument(4, new Reference('omouren_external_var_dumper.var_dumper.server_connection'));
+            if ($container->hasDefinition('debug.dump_listener')) {
+                $container->getDefinition('debug.dump_listener')
+                    ->replaceArgument(2, new Reference('omouren_external_var_dumper.var_dumper.server_connection'));
+            }
+
+            if ($container->hasDefinition('data_collector.dump')) {
+                $container->getDefinition('data_collector.dump')
+                    ->replaceArgument(4, new Reference('omouren_external_var_dumper.var_dumper.server_connection'));
+            }
         }
     }
 }
